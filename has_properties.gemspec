@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.date      =   Date.today.strftime('%Y-%m-%d')
   s.author    =   "Thomas Kadauke"
   s.email     =   "tkadauke@imedo.de"
-  s.homepage  =   "Makes STI base classes with extensible attributes possible through serialization"
+  s.description = "Makes STI base classes with extensible attributes possible through serialization"
   s.summary   =   "Insert description here"
   s.files     =   Dir.glob("{lib}/**/*")
 
