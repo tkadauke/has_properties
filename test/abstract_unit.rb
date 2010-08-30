@@ -11,8 +11,8 @@ class Shape < ActiveRecord::Base
 end
 
 class Rectangle < Shape
-  property :width, :integer
-  property :height, :integer
+  property :width, :integer, :default => 10
+  property :height, :integer, :default => lambda { self.width }
 end
 
 class Circle < Shape

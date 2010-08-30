@@ -38,4 +38,14 @@ class HasPropertiesTest < ActiveSupport::TestCase
     circle = Circle.new
     assert_equal 0, circle.radius
   end
+  
+  test "should accept literal default value" do
+    rect = Rectangle.new
+    assert_equal 10, rect.width
+  end
+  
+  test "should accept block default values" do
+    rect = Rectangle.new
+    assert_equal rect.width, rect.height
+  end
 end
