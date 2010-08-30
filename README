@@ -1,0 +1,49 @@
+has_properties
+
+Extensible attributes for single table inheritance (STI) class hierarchies.
+
+Description
+
+This gem adds a method to ActiveRecord::Base with which you can declare that your STI base class
+has a column that holds all attributes that are only needed by subclasses. Internally, all attributes
+are serialized as YAML in a single text field.
+
+Consider the following base class:
+
+  class Shape < ActiveRecord::Base
+    has_properties :in => :data
+  end
+
+with this schema
+
+  create_table :shapes do |t|
+    t.integer :x
+    t.integer :y
+    t.integer :data
+  end
+
+and the following subclasses:
+
+  class Rectangle < Shape
+    property :width, :integer
+    property :height, :integer
+  end
+  
+  class Circle < Shape
+    property :radius, :integer
+  end
+
+Each subclass has its own attributes that are not relevant to other classes in the hierarchy. You
+can use these attributes just as you would use any other attribute:
+
+  circle = Circle.create(:x => 10, :y => 20, :radius => 5)
+
+Serialization and deserialization are done completely transparent.
+
+Caveats
+
+* The properties are not searchable by SQL, i.e. this is not possible:
+
+  Circle.find_all_by_radius(5) #=> ERROR!
+
+* Properties are not really attributes, e.g. dirty tracking is not (yet) available for attributes.
