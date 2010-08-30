@@ -19,7 +19,7 @@ with this schema
   create_table :shapes do |t|
     t.integer :x
     t.integer :y
-    t.integer :data
+    t.text :data
   end
 
 and the following subclasses:
