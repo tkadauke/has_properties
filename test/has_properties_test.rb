@@ -48,4 +48,19 @@ class HasPropertiesTest < ActiveSupport::TestCase
     rect = Rectangle.new
     assert_equal rect.width, rect.height
   end
+  
+  test "should support string property" do
+    circle = Circle.new(:name => 'foobar')
+    assert_equal 'foobar', circle.name
+  end
+  
+  test "should support integer property" do
+    circle = Circle.new(:radius => 10)
+    assert_equal 10, circle.radius
+  end
+  
+  test "should support boolean property" do
+    circle = Circle.new(:filled => true)
+    assert_equal true, circle.filled
+  end
 end

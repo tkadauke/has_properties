@@ -8,6 +8,8 @@ require 'mocha'
 
 class Shape < ActiveRecord::Base
   has_properties :in => :data
+  property :filled, :boolean
+  property :name, :string
 end
 
 class Rectangle < Shape
